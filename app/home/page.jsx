@@ -3,7 +3,7 @@ import MyTable from "../components/MyTable"
 
 const getAtheltes =async  ()=> {
   try {
-    const res = await fetch("http://localhost:3000/api/athlete",{cache : "no-store"});
+    const res = await fetch("https://gymdashboard.vercel.app/api/athlete",{cache : "no-store"});
     if (!res.ok) {
       throw new Error("http responce error");
     }

@@ -18,7 +18,7 @@ const EditDeliteUser = ({user}) => {
       setErrorMsg("")
       setSuccessMsg("")
      try{
-        const res =  await fetch(`http://localhost:3000/api/athlete/${user._id}`,{
+        const res =  await fetch(`https://gymdashboard.vercel.app/api/athlete/${user._id}`,{
             headers:{
                 "Content-Type":"application/json"
             },
@@ -51,7 +51,7 @@ const EditDeliteUser = ({user}) => {
         setErrorMsg("");
         setSuccessMsg("");
         try {
-          const reponce = await fetch(`http://localhost:3000/api/athlete/${user._id}`, {
+          const reponce = await fetch(`https://gymdashboard.vercel.app/api/athlete/${user._id}`, {
             headers: {
               "Content-Type": "application/json",
             },

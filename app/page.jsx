@@ -14,7 +14,8 @@ const Auth = () => {
   setSuccessMsg("");
     try {
       e.preventDefault();
-      const res = await fetch("http://localhost:3000/api/auth", {
+    
+      const res = await fetch(("https://gymdashboard.vercel.app/api/auth"), {
         headers: {
           "Content-Type": "application/json",
         },
@@ -82,3 +83,4 @@ const Auth = () => {
 };
 
 export default Auth;
+ 
