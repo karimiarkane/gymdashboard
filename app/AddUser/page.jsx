@@ -20,7 +20,7 @@ const router = useRouter()
     setErrorMsg("");
     setSuccessMsg("");
     try {
-      const reponce = await fetch("http://localhost:3000/api/athlete", {
+      const reponce = await fetch("https://gymdashboard.vercel.app/api/athlete", {
         headers: {
           "Content-Type": "application/json",
         },
