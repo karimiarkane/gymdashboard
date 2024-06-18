@@ -135,7 +135,7 @@ const MyTable = ({data}) => {
                               {/* <td className="pr-6 py-4 whitespace-nowrap">{item.prop}</td> */}
                           
                                   <td className="pr-6 py-4 whitespace-nowrap text-indigo-600">
-                                  <Link href={`https://gymdashboard.vercel.app/user/${item._id}`}>
+                                  <Link href={`/user/${item._id}`}>
                                     {item.nom} {item.prenom}
                                     </Link>
                                   </td>

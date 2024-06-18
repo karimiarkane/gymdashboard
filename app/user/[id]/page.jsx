@@ -1,7 +1,7 @@
 import EditDeliteUser from "../../components/EditDeliteUser"
 const  getuser = async (id)=>{
     try{
-        const data = await fetch(`http://localhost:3000/api/athlete/${id}`) 
+        const data = await fetch(`https://gymdashboard.vercel.app/api/athlete/${id}`) 
         return await data.json()
 }catch(err){
     console.log(err)
