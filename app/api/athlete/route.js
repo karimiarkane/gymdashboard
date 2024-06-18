@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import connection from "../../config/connection";
 import User from '../../models/UserSchema.jsx'
