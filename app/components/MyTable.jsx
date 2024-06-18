@@ -14,7 +14,6 @@ const MyTable = ({data}) => {
 
   const hundleSubmit = async  (e)=>{
     e.preventDefault()
-    console.log("searching for ", query)
     const result = data.filter((user)=>user.nom.toLowerCase() == query.toLowerCase().split(" ")[0]   && user.prenom.toLowerCase() == query.toLowerCase().split(" ")[1])
     setSearchResult(result)
     setHasSearched(true)
@@ -58,15 +57,6 @@ const MyTable = ({data}) => {
     
    <>
    <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-        {/* <div className="max-w-lg">
-          <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
-            Reports
-          </h3>
-          <p className="text-gray-600 mt-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
-          </p>
-        </div> */}
            <form
             onSubmit={hundleSubmit} 
             className="max-w-md px-4 mx-auto mt-12">

@@ -4,7 +4,6 @@ import User from '../../models/UserSchema.jsx'
 
 function checkValidite(user){
 if (user.DateFin.getTime() < Date.now()   ){
-    console.log("user non autorise")
     user.status = "nonautorisé"
 }
 return user

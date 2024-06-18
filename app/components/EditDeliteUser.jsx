@@ -3,7 +3,6 @@ import {useState} from "react"
 import {useRouter} from 'next/navigation'
 
 const EditDeliteUser = ({user}) => {
-console.log("user ",user)
   // format dates got from the db to be used in the input type date
     const date = new Date(user.DateDebut);
     user.DateDebut = date.toISOString().split('T')[0];

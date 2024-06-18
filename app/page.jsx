@@ -14,7 +14,6 @@ const Auth = () => {
   setSuccessMsg("");
     try {
       e.preventDefault();
-      console.log("userCredentials ", userCredentials);
       const res = await fetch("http://localhost:3000/api/auth", {
         headers: {
           "Content-Type": "application/json",
