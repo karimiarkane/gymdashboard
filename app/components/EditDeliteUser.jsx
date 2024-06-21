@@ -14,11 +14,14 @@ const EditDeliteUser = ({user}) => {
     const [errorMsg, setErrorMsg] = useState("");
     const router = useRouter()
 
+    const url = process.env.NEXT_PUBLIC_ENVIRONMENT === "development" ? process.env.NEXT_PUBLIC_API_URL_DEV : process.env.NEXT_PUBLIC_API_URL_PROD
     const hundleDeliteClick = async ()=>{
       setErrorMsg("")
       setSuccessMsg("")
+      const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+      if (confirmDelete) {
      try{
-        const res =  await fetch(`https://gymdashboard.vercel.app/api/athlete/${user._id}`,{
+        const res =  await fetch(`${url}/api/athlete/${user._id}`,{
             headers:{
                 "Content-Type":"application/json"
             },
@@ -30,14 +33,14 @@ const EditDeliteUser = ({user}) => {
             throw new Error(resback.message)
         }else{
             setSuccessMsg(resback.message)
-            router.push("/home")
+            router.push("/")
         }
      }catch(err){
         setErrorMsg(err.message || "une erreure s'est produite ressayer plus tard")
         console.log(err)
      }
     }
-
+  }
     const hundleChange = (e) => {
         if (e.target.type === "radio") {
           setUserInfo({ ...userInfo, [e.target.name]: e.target.id });
@@ -51,7 +54,7 @@ const EditDeliteUser = ({user}) => {
         setErrorMsg("");
         setSuccessMsg("");
         try {
-          const reponce = await fetch(`https://gymdashboard.vercel.app/api/athlete/${user._id}`, {
+          const reponce = await fetch(`${url}/api/athlete/${user._id}`, {
             headers: {
               "Content-Type": "application/json",
             },
@@ -63,7 +66,7 @@ const EditDeliteUser = ({user}) => {
             throw new Error(resback.message)
           }else{
             setSuccessMsg("user updated");
-            router.push("/home")
+            router.push("/")
           }
         } catch (err) {
           setErrorMsg("something went wrong try later")
@@ -125,7 +128,7 @@ const EditDeliteUser = ({user}) => {
             name="DateFin"
             onChange={hundleChange}
             value={userInfo.DateFin}
-            className=" pr-12 pl-5 py-1.5 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+            className="pr-7 pl-4 md:pr-12 md:pl-5 py-1.5  text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
           ></input>
         </div>
         <div className="p-2.5">

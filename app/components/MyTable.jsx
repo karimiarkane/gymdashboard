@@ -1,13 +1,17 @@
 "use client"
 import { useState } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+
 
 const MyTable = ({data}) => {
-
+ 
+ 
+  const router = useRouter()
   const [query , setQuery] = useState("")
   const [searchResult , setSearchResult] = useState([])
   const [hasSearched , setHasSearched]= useState(false)
-
   const hundleChange = (e)=>{
    setQuery(e.target.value)
   }
@@ -56,6 +60,9 @@ const MyTable = ({data}) => {
   return (
     
    <>
+   {
+
+   }
    <div className="max-w-screen-xl mx-auto px-4 md:px-8">
            <form
             onSubmit={hundleSubmit} 
@@ -79,7 +86,7 @@ const MyTable = ({data}) => {
                         href="/AddUser"
                         className="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 md:text-sm"
                     >
-                        Add member
+                        Ajouer un Athlete
                     </Link>
         </div>
      

@@ -1,4 +1,9 @@
 import EditDeliteUser from "../../components/EditDeliteUser"
+import { getServerSession } from "next-auth"
+const session = getServerSession()
+if(!session){
+    redirect("/api/auth/signin")
+}
 const  getuser = async (id)=>{
     try{
         const data = await fetch(`https://gymdashboard.vercel.app/api/athlete/${id}`) 

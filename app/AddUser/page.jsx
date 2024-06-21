@@ -1,6 +1,8 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
+
 
 const AddUser = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -14,13 +16,14 @@ const router = useRouter()
       setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
     }
   };
+  const url = process.env.NEXT_PUBLIC_ENVIRONMENT === "development" ? process.env.NEXT_PUBLIC_API_URL_DEV : process.env.NEXT_PUBLIC_API_URL_PROD
 
   const hundleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
     try {
-      const reponce = await fetch("https://gymdashboard.vercel.app/api/athlete", {
+      const reponce = await fetch((`${url}/api/athlete`), {
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,14 +35,18 @@ const router = useRouter()
         throw new Error(resback.message)
       }else{
         setSuccessMsg(resback.message);
-        router.push("/home")
+        router.push("/")
       }
     } catch (err) {
       setErrorMsg(err.message || "Une erreur s'est produite . Veuillez réessayer")
       console.log(err);
     }
   };
-
+  const session = useSession()
+  console.log("session from add user",session)
+  if(session.data === undefined){
+    redirect("/api/auth/signin")
+  }
   return (
     <>
       <form
@@ -60,7 +67,7 @@ const router = useRouter()
           ></input>
         </div>
         <div className="p-2.5">
-          <label htmlfor="prenom" className="text-gray-600">
+          <label htmlFor="prenom" className="text-gray-600">
             Prenom :{" "}
           </label>
           <input
@@ -73,7 +80,7 @@ const router = useRouter()
           ></input>
         </div>
         <div className="p-2.5">
-          <label htmlfor="dated" className="text-gray-600">
+          <label htmlFor="dated" className="text-gray-600">
             date debut :{" "}
           </label>
           <input
@@ -86,7 +93,7 @@ const router = useRouter()
           ></input>
         </div>
         <div className="p-2.5">
-          <label htmlfor="datef" className="text-gray-600">
+          <label htmlFor="datef" className="text-gray-600">
             date fin :{" "}
           </label>
           <input
