@@ -57,6 +57,8 @@ const MyTable = ({data}) => {
           color: "text-red-600 bg-red-50",
         },
       };
+        const url = process.env.NEXT_PUBLIC_ENVIRONMENT === "development" ? process.env.NEXT_PUBLIC_API_URL_DEV : process.env.NEXT_PUBLIC_API_URL_PROD
+
   return (
     
    <>
@@ -142,7 +144,7 @@ const MyTable = ({data}) => {
                               {/* <td className="pr-6 py-4 whitespace-nowrap">{item.prop}</td> */}
                           
                                   <td className="pr-6 py-4 whitespace-nowrap text-indigo-600">
-                                  <Link href={`/user/${item._id}`}>
+                                  <Link href={`${url}/user/${item._id}`}>
                                     {item.nom} {item.prenom}
                                     </Link>
                                   </td>
