@@ -1,11 +1,14 @@
 "use client"
 
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const AddUser = () => {
     const [userInfo, setUserInfo] = useState({});
     const [successMsg, setSuccessMsg] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+
+    const router = useRouter();
     const hundleChange = (e) => {
       if (e.target.type === "radio") {
         setUserInfo({ ...userInfo, [e.target.name]: e.target.id });
