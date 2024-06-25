@@ -18,7 +18,7 @@ const EditDeliteUser = ({user}) => {
     const hundleDeliteClick = async ()=>{
       setErrorMsg("")
       setSuccessMsg("")
-      const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+      const confirmDelete = window.confirm("voulez vous vraiment supprimer cet utilisateur");
       if (confirmDelete) {
      try{
         const res =  await fetch(`${url}/api/athlete/${user._id}`,{

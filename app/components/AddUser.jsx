@@ -32,7 +32,7 @@ const AddUser = () => {
           throw new Error(resback.message)
         }else{
           setSuccessMsg(resback.message);
-          router.push("/")
+          router.push("/home")
         }
       } catch (err) {
         setErrorMsg(err.message || "Une erreur s'est produite . Veuillez réessayer")
