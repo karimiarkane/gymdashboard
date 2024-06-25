@@ -33,7 +33,7 @@ const EditDeliteUser = ({user}) => {
             throw new Error(resback.message)
         }else{
             setSuccessMsg(resback.message)
-            router.push("/")
+            router.push("/home")
         }
      }catch(err){
         setErrorMsg(err.message || "une erreure s'est produite ressayer plus tard")
@@ -66,7 +66,7 @@ const EditDeliteUser = ({user}) => {
             throw new Error(resback.message)
           }else{
             setSuccessMsg("user updated");
-            router.push("/")
+            router.push("/home")
           }
         } catch (err) {
           setErrorMsg("something went wrong try later")

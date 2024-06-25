@@ -1,14 +1,11 @@
 "use client"
 import { useState } from 'react'
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 
 
 const MyTable = ({data}) => {
  
- 
-  const router = useRouter()
   const [query , setQuery] = useState("")
   const [searchResult , setSearchResult] = useState([])
   const [hasSearched , setHasSearched]= useState(false)

@@ -1,5 +1,5 @@
 import EditDeliteUser from "../../components/EditDeliteUser"
-import { getServerSession } from "next-auth"
+import { auth } from "../../auth";
 
 const  getuser = async (id)=>{
     
@@ -12,9 +12,9 @@ const  getuser = async (id)=>{
 }
 
 const User = async ({params}) => {
-    const session = await getServerSession()
+    const session = await auth()
 if(!session){
-    redirect("/api/auth/signin")
+    redirect("/")
 }
     const {data} = await getuser(params.id)
   return (
