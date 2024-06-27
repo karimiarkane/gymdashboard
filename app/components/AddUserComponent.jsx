@@ -1,14 +1,18 @@
 "use client"
 
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+import {refreshContext} from "../context/index"
 
-const AddUser = () => {
+
+const AddUserComponent = () => {
     const [userInfo, setUserInfo] = useState({});
     const [successMsg, setSuccessMsg] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
-
     const router = useRouter();
+    const {needToRefresh , setNeedToRefresh} = useContext(refreshContext)
+
+   
     const hundleChange = (e) => {
       if (e.target.type === "radio") {
         setUserInfo({ ...userInfo, [e.target.name]: e.target.id });
@@ -34,6 +38,7 @@ const AddUser = () => {
         if(resback.status !== 200){
           throw new Error(resback.message)
         }else{
+setNeedToRefresh(true)
           setSuccessMsg(resback.message);
           router.push("/home")
         }
@@ -42,6 +47,7 @@ const AddUser = () => {
         console.log(err);
       }
     };
+  
    
   return (
    <>
@@ -153,4 +159,4 @@ const AddUser = () => {
   )
 }
 
-export default AddUser
+export default AddUserComponent

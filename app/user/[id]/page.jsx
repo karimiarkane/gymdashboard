@@ -2,6 +2,7 @@ import EditDeliteUser from "../../components/EditDeliteUser"
 import { auth } from "../../auth";
 
 const  getuser = async (id)=>{
+
     
     try{
         const data = await fetch(`https://gymdashboard.vercel.app/api/athlete/${id}`) 
@@ -12,11 +13,13 @@ const  getuser = async (id)=>{
 }
 
 const User = async ({params}) => {
+
     const session = await auth()
 if(!session){
     redirect("/")
 }
     const {data} = await getuser(params.id)
+
   return (
    
   <>

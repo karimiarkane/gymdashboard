@@ -1,8 +1,9 @@
 
 
 import { auth } from "../auth";
-import MyTable from "../components/MyTable"
 import { redirect } from "next/navigation";
+import MyTable from "../components/MyTable"
+
 
 
 const getAtheltes =async  ()=> {
@@ -24,8 +25,6 @@ export default async function Home() {
 
   const athletes = await getAtheltes();
   const session = await auth()
-  console.log("session from the home page",session)
-
   if(!session){
     redirect("/")
   }

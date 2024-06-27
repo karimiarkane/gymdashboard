@@ -1,11 +1,20 @@
 "use client"
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { refreshContext } from '../context/index';
+
 
 
 
 const MyTable = ({data}) => {
- 
+  const router = useRouter()
+  const {needToRefresh , setNeedToRefresh} = useContext(refreshContext)
+  console.log("context : ",needToRefresh , setNeedToRefresh)
+  if(needToRefresh){
+    router.refresh()
+    setNeedToRefresh(false)
+  }
   const [query , setQuery] = useState("")
   const [searchResult , setSearchResult] = useState([])
   const [hasSearched , setHasSearched]= useState(false)
@@ -59,9 +68,7 @@ const MyTable = ({data}) => {
   return (
     
    <>
-   {
 
-   }
    <div className="max-w-screen-xl mx-auto px-4 md:px-8">
            <form
             onSubmit={hundleSubmit} 
@@ -135,7 +142,7 @@ const MyTable = ({data}) => {
                 <tbody className="text-gray-600 divide-y">
                   {tableItems[selectedItem].items.map((item, idx) => {
                      const isHighlighted = hasSearched && searchResult.includes(item)
-                       return  <tr key={idx} className={isHighlighted && `bg-yellow-200`}>
+                       return  <tr key={idx} className={isHighlighted ? `bg-yellow-200` : ""}>
 
               
                               {/* <td className="pr-6 py-4 whitespace-nowrap">{item.prop}</td> */}

@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// // import SessionProviderComponent from "./components/SessionProviderComponent"
+import {RefreshProvider} from "./context/index"
 import { SessionProvider } from "next-auth/react"
 import {auth} from "./auth"
 
@@ -23,9 +23,13 @@ export default async function RootLayout({
     <html lang="en">
       <body 
       className={inter.className}>
-      <SessionProvider session={session}>
+
+   <RefreshProvider>
+   <SessionProvider session={session}>
         {children}
         </SessionProvider>
+    
+    </RefreshProvider> 
 
       </body>
 

@@ -1,6 +1,8 @@
 "use client"
-import {useState} from "react"
+import {useContext, useState} from "react"
 import {useRouter} from 'next/navigation'
+import {refreshContext} from "../context/index"
+
 
 const EditDeliteUser = ({user}) => {
   // format dates got from the db to be used in the input type date
@@ -13,7 +15,6 @@ const EditDeliteUser = ({user}) => {
     const [successMsg, setSuccessMsg] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const router = useRouter()
-
     const url = process.env.NEXT_PUBLIC_ENVIRONMENT === "development" ? process.env.NEXT_PUBLIC_API_URL_DEV : process.env.NEXT_PUBLIC_API_URL_PROD
     const hundleDeliteClick = async ()=>{
       setErrorMsg("")
@@ -32,6 +33,7 @@ const EditDeliteUser = ({user}) => {
         if(resback.status !== 200){
             throw new Error(resback.message)
         }else{
+            setNeedToRefresh(true)
             setSuccessMsg(resback.message)
             router.push("/home")
         }
@@ -65,6 +67,7 @@ const EditDeliteUser = ({user}) => {
           if(resback.status !== 200){
             throw new Error(resback.message)
           }else{
+            setNeedToRefresh(true)
             setSuccessMsg("user updated");
             router.push("/home")
           }
@@ -73,6 +76,8 @@ const EditDeliteUser = ({user}) => {
           console.log(err);
         }
       };
+
+      const {needToRefresh,setNeedToRefresh} = useContext(refreshContext)
   return (
 <>
 <form
@@ -93,7 +98,7 @@ const EditDeliteUser = ({user}) => {
           ></input>
         </div>
         <div className="p-2.5">
-          <label htmlfor="prenom" className="text-gray-600">
+          <label htmlFor="prenom" className="text-gray-600">
             Prenom :{" "}
           </label>
           <input
@@ -106,7 +111,7 @@ const EditDeliteUser = ({user}) => {
           ></input>
         </div>
         <div className="p-2.5">
-          <label htmlfor="dated" className="text-gray-600">
+          <label htmlFor="dated" className="text-gray-600">
             date debut :{" "}
           </label>
           <input
@@ -119,7 +124,7 @@ const EditDeliteUser = ({user}) => {
           ></input>
         </div>
         <div className="p-2.5">
-          <label htmlfor="datef" className="text-gray-600">
+          <label htmlFor="datef" className="text-gray-600">
             date fin :{" "}
           </label>
           <input

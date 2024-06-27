@@ -34,8 +34,8 @@ export const {
         },
         session: async ({ session, token }) => {
             session.user = token.user
-            console.log("session",session)
-            console.log("new date()",new Date())
+            // console.log("session",session)
+            // console.log("new date()",new Date())
          
 
             return session
