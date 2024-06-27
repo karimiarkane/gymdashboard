@@ -20,10 +20,13 @@ export const {
                 password: {},
             },
             async authorize(credentials) { 
-                if(credentials.username == process.env.NOM_PRENOM && credentials.password == process.env.PASSWORD)         
-                  return credentials 
-                else throw new Error('Invalid credentialsSS')
-                },
+                if(credentials.username == process.env.NOM_PRENOM && credentials.password == process.env.PASSWORD)     {
+                    return credentials 
+                }    
+                else 
+                    return null
+              
+                 },
         }),
 
     ],

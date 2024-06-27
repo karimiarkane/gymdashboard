@@ -1,13 +1,14 @@
 "use client";
 import {doCredentialLogin} from "../actions/index"
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 const Login = () => {
 
 
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [userCredentials, setUserCredentials] = useState({});
+  const router = useRouter();
   const hundleChange = (e) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
   };
@@ -19,18 +20,14 @@ const Login = () => {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
 
-      const response = await doCredentialLogin(formData)
-      if (!!response.error) {
-        setErrorMsg(response.error.message);
-        console.error("error after res from server action",response.error);
-    } else {
+       await doCredentialLogin(formData) 
       setSuccessMsg("vous etes connecter")
         router.push("/home");
-    }
+  //  }
    
     } catch (err) {
       setErrorMsg("incorrectes informations");
-      console.error(e);
+      console.error(err);
 
     }
   };

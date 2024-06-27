@@ -17,6 +17,8 @@ export async function doCredentialLogin(formData) {
     });
     return response;
   } catch (err) {
+    console.log("err catched in doCredentialLogin",err)
     throw err;
+
   }
 }
