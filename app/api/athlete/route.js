@@ -36,7 +36,7 @@ export async function POST(request){
     try{
         connection()
         await User.create({nom, prenom, DateDebut, DateFin, status})
-        return NextResponse.json({status:200, message:"Utilisateur créé avec succès"})
+        return NextResponse.json({status:200, message:"Utilisateur créé "})
     }catch(err){
         console.log("error from the backend :", err)
         return NextResponse.json({status:500, message:"Une erreur s'est produite . Veuillez réessayer "})

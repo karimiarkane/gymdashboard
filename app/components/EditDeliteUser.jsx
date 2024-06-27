@@ -34,7 +34,7 @@ const EditDeliteUser = ({user}) => {
             throw new Error(resback.message)
         }else{
             setNeedToRefresh(true)
-            setSuccessMsg(resback.message)
+            setSuccessMsg("utilisateur supprimé")
             router.push("/home")
         }
      }catch(err){
@@ -68,11 +68,11 @@ const EditDeliteUser = ({user}) => {
             throw new Error(resback.message)
           }else{
             setNeedToRefresh(true)
-            setSuccessMsg("user updated");
+            setSuccessMsg("utilisateur modifié");
             router.push("/home")
           }
         } catch (err) {
-          setErrorMsg("something went wrong try later")
+          setErrorMsg("une erreure s'est produite ressayer plus tard")
           console.log(err);
         }
       };
@@ -120,7 +120,7 @@ const EditDeliteUser = ({user}) => {
             name="DateDebut"
             onChange={hundleChange}
             value={userInfo.DateDebut}
-            className=" pr-12 pl-5 py-1.5 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+            className="pr-7 pl-4 md:pr-12 md:pl-5 py-1.5  text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
           ></input>
         </div>
         <div className="p-2.5">
@@ -133,7 +133,7 @@ const EditDeliteUser = ({user}) => {
             name="DateFin"
             onChange={hundleChange}
             value={userInfo.DateFin}
-            className="pr-7 pl-4 md:pr-12 md:pl-5 py-1.5  text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+            className="pr-6 pl-4 md:pr-12 md:pl-5 py-1.5  text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
           ></input>
         </div>
         <div className="p-2.5">

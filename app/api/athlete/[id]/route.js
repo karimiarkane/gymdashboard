@@ -20,7 +20,7 @@ export async function PUT(request, {params}){
   try{ 
     await connection()
     await User.findByIdAndUpdate(id,await request.json())
-    return NextResponse.json({status:200 , message:"utilisateur modifié avec succès"})
+    return NextResponse.json({status:200 , message:"utilisateur modifié "})
   }catch(err){
     console.log("err from the back is : " ,  err)
     return NextResponse.json({status:500 , message:"une erreur s'est produite veuillez réessayer plus tard"})

@@ -10,7 +10,6 @@ import { refreshContext } from '../context/index';
 const MyTable = ({data}) => {
   const router = useRouter()
   const {needToRefresh , setNeedToRefresh} = useContext(refreshContext)
-  console.log("context : ",needToRefresh , setNeedToRefresh)
   if(needToRefresh){
     router.refresh()
     setNeedToRefresh(false)
@@ -97,7 +96,7 @@ const MyTable = ({data}) => {
         </div>
      
 
-        <div className="text-sm mt-12 overflow-x-auto">
+        <div className="text-sm mt-12 overflow-x</div>-auto">
           <ul
             rol="tablist"
             className="w-full border-b flex items-center gap-x-3 overflow-x-auto"
@@ -127,7 +126,7 @@ const MyTable = ({data}) => {
               <table className="w-full table-auto text-left">
                 <thead className="text-gray-600 font-medium border-b">
                 <tr>
-                    <td className="pr-6 py-4 whitespace-nowrap"><p>there are {tableItems[selectedItem].nbr}</p></td>
+                    <td className="pr-6 py-4 whitespace-nowrap"><p>Nombre des Atheletes : {tableItems[selectedItem].nbr} athlete</p></td>
                 </tr>
               
                   <tr>
@@ -145,7 +144,7 @@ const MyTable = ({data}) => {
                        return  <tr key={idx} className={isHighlighted ? `bg-yellow-200` : ""}>
 
               
-                              {/* <td className="pr-6 py-4 whitespace-nowrap">{item.prop}</td> */}
+                              {/* <td className="pr-6 py-4 whitespace-nowrap">{item.prop}</Link></td> */}
                           
                                   <td className="pr-6 py-4 whitespace-nowrap text-indigo-600">
                                   <Link href={`${url}/user/${item._id}`}>

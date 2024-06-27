@@ -78,7 +78,7 @@ setNeedToRefresh(true)
             id="prenom"
             name="prenom"
             onChange={hundleChange}
-            className=" pr-12 pl-3 py-1.5 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+            className=" pr-6 pl-4 md:pr-12 md:pl-5 py-1.5  text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
           ></input>
         </div>
         <div className="p-2.5">
